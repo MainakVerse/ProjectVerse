@@ -1,12 +1,12 @@
-export const Button = (props: React.PropsWithChildren) => {
+// components/button.tsx or .jsx
+import React from "react";
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const Button: React.FC<ButtonProps> = ({ className = "", children, ...props }) => {
   return (
-    <button className="relative px-4 py-2 font-tomorrow text-sm font-medium">
-      <div className="absolute inset-0">
-        <div className=" rounded-full absolute inset-0 border border-white/20"></div>
-        <div className=" rounded-full absolute inset-0 border border-white/40"></div>
-        <div className="absolute inset-0 shadow-[0_0_10px_rgba(169,32,0,0.7)_inset] rounded-full"></div>
-      </div>
-      <span>{props.children}</span>
+    <button className={`px-4 py-2 rounded bg-blue-600 text-white ${className}`} {...props}>
+      {children}
     </button>
   );
 };

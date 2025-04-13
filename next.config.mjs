@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Optional: if you're using static export (SSG only)
+  // output: 'export',
+
+  // Optional: add custom extensions if you ever use `.mdx` or `.page.tsx` in the future
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
+
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
@@ -17,7 +23,7 @@ const nextConfig = {
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
         use: ["@svgr/webpack"],
       }
     );
@@ -26,6 +32,15 @@ const nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
+  },
+
+  // Optional but helps with SEO via headers or redirects later
+  reactStrictMode: true,
+  trailingSlash: true, // SEO-friendly URLs: /about/ instead of /about
+
+  // Recommended for image optimization (auto by Next.js)
+  images: {
+    domains: ['projectverse.shop'], // Add image CDN or hosting domain if needed
   },
 };
 

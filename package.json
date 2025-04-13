@@ -1,12 +1,13 @@
 {
-  "name": "ai-startup-landing-page",
+  "name": "project-verse",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@dotlottie/react-player": "^1.6.19",
@@ -20,6 +21,7 @@
     "framer-motion": "^11.3.24",
     "lucide-react": "^0.487.0",
     "next": "14.2.5",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",

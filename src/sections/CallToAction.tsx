@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Button } from "../../components/button";
+
 import starsBg from "@/assets/starses.png";
 import gridLines from "@/assets/grid-lines.png";
 import { RefObject, useEffect, useRef, useTransition } from "react";
@@ -97,9 +97,7 @@ export const CallToAction = () => {
               </p>
             </div>
 
-            <div className="flex justify-center">
-              <Link href='/projects'><Button>Order Now</Button></Link>
-            </div>
+            
           </div>
         </motion.div>
       </div>

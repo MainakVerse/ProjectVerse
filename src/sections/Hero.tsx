@@ -1,19 +1,17 @@
 "use client";
+
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-// import { World } from "@/components/ui/globe";
-import { Button } from "../../components/button";
-import starsBg from "@/assets/stars.png";
-import { Cover } from "../components/ui/cover";
-import { useRef } from "react";
 import dynamic from "next/dynamic";
+import { useRef } from "react";
 
+import starsBg from "@/assets/stars.png";
+import { Button } from "../../components/button";
+import { Cover } from "../components/ui/cover";
 
-const World = dynamic(() => import('@/components/ui/globe').then((mod) => mod.World), { ssr: false });
-
+const World = dynamic(() => import('@/components/ui/globe').then(mod => mod.World), { ssr: false });
 
 export const Hero = () => {
-
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -21,23 +19,19 @@ export const Hero = () => {
     offset: ["start end", "end start"],
   });
 
-  const backgroundPositionY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [-400, 400]
-  );
+  const backgroundPositionY = useTransform(scrollYProgress, [0, 1], [-400, 400]);
 
   return (
     <section
-      className=" flex flex-col items-center h-[70vh]  md:h-[80vh]  overflow-hidden relative "
+      ref={sectionRef}
+      className="flex flex-col items-center h-[70vh] md:h-[80vh] overflow-hidden relative"
       style={{
-        // WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
         maskImage:
           "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
       }}
     >
       <motion.div
-        className="absolute inset-0 "
+        className="absolute inset-0"
         style={{
           backgroundImage: `url(${starsBg.src})`,
           backgroundSize: "cover",
@@ -46,12 +40,12 @@ export const Hero = () => {
           backgroundPositionY,
         }}
         animate={{
-          backgroundPositionX: starsBg.width,
+          backgroundPositionX: ["0%", "100%"],
         }}
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: "120",
+          duration: 120,
         }}
       ></motion.div>
 
@@ -60,35 +54,26 @@ export const Hero = () => {
       </div>
 
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
         className="md:mt-32 mt-14"
       >
         <div className="mb-5">
-          <h1 className="font-tomorrow text-4xl md:text-7xl font-semibold text-center tracking-tighter  bg-[radial-gradient(100%_100%_at_top_left,_white,_white,_rgba(0,_49,_83,_0.5))] text-transparent bg-clip-text">
+          <h1 className="font-tomorrow text-4xl md:text-7xl font-semibold text-center tracking-tighter bg-[radial-gradient(100%_100%_at_top_left,_white,_white,_rgba(0,_49,_83,_0.5))] text-transparent bg-clip-text">
             Get Cool Projects
             <div className="mt-5">
-              <Cover className="flex bg-white items-center justify-center flex-1 w-auto  bg-[radial-gradient(100%_100%_at_top_left,_white,_white,_rgba(0,_49,_83,_0.5))] text-transparent bg-clip-text">
+              <Cover className="flex bg-white items-center justify-center flex-1 w-auto bg-[radial-gradient(100%_100%_at_top_left,_white,_white,_rgba(0,_49,_83,_0.5))] text-transparent bg-clip-text">
                 At Best Price
               </Cover>
             </div>
           </h1>
         </div>
-        <p className="max-w-lg mx-auto mb-5 text-base font-light text-center font-tomorrow md:text-xl text-neutral-700 dark:text-neutral-200 w-[90%] ">
-          More than 85% of students get top grades and dream placements with an industry standard project. 
+        <p className="max-w-lg mx-auto mb-5 text-base font-light text-center font-tomorrow md:text-xl text-neutral-700 dark:text-neutral-200 w-[90%]">
+          More than 85% of students get top grades and dream placements with an industry standard project.
         </p>
-
         <div className="flex justify-center m-5">
-          <Link href='/projects'><Button>Learn More</Button></Link>
+        
         </div>
       </motion.div>
     </section>

@@ -2,3 +2,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes sparkle {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .sparkle-layer {
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 200%;
+    animation: sparkle 0.8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  button:hover .sparkle-layer {
+    opacity: 1;
+  }
+  

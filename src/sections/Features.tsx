@@ -1,5 +1,6 @@
 "use client";
-
+import Link from "next/link";
+import { Button } from "../../components/button";
 import {
   DotLottieCommonPlayer,
   DotLottiePlayer,
@@ -177,6 +178,15 @@ export const Features = () => {
 
   return (
     <section>
+      <div className="flex justify-center">
+  <Link href="/projects">
+    <button className="relative px-6 py-3 bg-violet-600 text-white rounded-lg hover:animate-sparkle transition duration-300 overflow-hidden">
+      <span className="relative z-10">Learn More</span>
+      <span className="absolute inset-0 sparkle-layer pointer-events-none" />
+    </button>
+  </Link>
+</div>
+
       <div className="w-[90%] m-auto md:container py-20 md:py-25 ">
         <GlobalHeading
           title="Explore Projects"

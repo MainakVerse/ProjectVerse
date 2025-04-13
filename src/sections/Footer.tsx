@@ -2,9 +2,9 @@
 import xLogo from "@/assets/x-logo.svg";
 import igLogo from "@/assets/instagram.svg";
 import linkEdLogo from "@/assets/linkedin.svg";
-
+import Link from 'next/link';
 import LogoIcon from "@/assets/logo.svg";
-import { Cover } from "../components/ui/cover";
+
 
 const sociaLogo = [xLogo, igLogo, linkEdLogo];
 
@@ -30,17 +30,10 @@ export const Footer = () => {
           </div>
           <div>
             <nav className="flex flex-col gap-4 text-sm font-tomorrow md:flex-row">
-              <a className="transition text-white/50 hover:text-white" href="#">
-                Samples
-              </a>
-              <a className="transition text-white/50 hover:text-white" href="#">
-                Projects
-              </a>              
-              <a className="transition text-white/50 hover:text-white" href="#">
-                Pricing
-              </a>
-              
-            </nav>
+            <Link href="/samples" className="transition text-white/50 hover:text-white">Samples</Link>
+              <Link href="/projects" className="transition text-white/50 hover:text-white">Projects</Link>
+              <Link href="/pricing" className="transition text-white/50 hover:text-white">Pricing Scheme</Link>
+             </nav>
           </div>
           {/* <div className="flex gap-3">
             {socialLogos.map((social, index) => {
